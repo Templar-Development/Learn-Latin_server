@@ -50,4 +50,4 @@ def format(url, word):
   final = re.sub(word, '', remove_title, 1)
   return final.strip()
 
-app.run(host="0.0.0.0", port="8080")  #run app
+app.run(host="0.0.0.0", port="5000")  #run app
