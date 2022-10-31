@@ -50,4 +50,6 @@ def format(url, word):
   final = re.sub(word, '', remove_title, 1)
   return final.strip()
 
-app.run(host="0.0.0.0", port="5000")  #run app
+if __name__ == '__main__':
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(threaded=True, port=5000)
