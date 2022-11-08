@@ -1,8 +1,9 @@
-from flask import Flask, request
-from flask_cors import CORS
-import requests
 import json
 import re
+
+import requests
+from flask import Flask, request
+from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
@@ -30,10 +31,15 @@ def Translate_Latin_To_English():
 
 @app.route("/ETL", methods=['GET'])
 def Whitaker_English_To_Latin():
+  list = []
   args = request.args
-  url = f'https://archives.nd.edu/cgi-bin/wordz.pl?english={args.get("word", default="", type=str)}'
-  final = format(url, args.get("word", default="", type=str))
-  return final
+  words = args.get("word", default="", type=str).split()
+  for i in range(len(words)):
+    url = f'https://archives.nd.edu/cgi-bin/wordz.pl?english={words[i]}'
+    word = format(url, words[i])
+    list.append(word)
+  
+  return " ".join(list)
 
 @app.route("/ETL-T", methods=['GET'])
 def Translate_English_To_Latin():
