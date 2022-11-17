@@ -29,6 +29,7 @@ def Translate_Latin_To_English():
   data = json.loads(response.text)
   return data["TranslatedContent"]
 
+#TODO add a line break inbetween individual definitions
 @app.route("/ETL", methods=['GET'])
 def Whitaker_English_To_Latin():
   list = []
